@@ -37,7 +37,17 @@ q.add_transition(states[12], states[13], 'n')
 q.add_transition(states[13], states[8], 'g')
 q.add_transition(states[14], states[8], 's')
 q.add_transition(states[15], states[16], 'i')
-#fault
+q.add_transition(states[15], states[16], 'i')
+q.add_transition(states[16], states[10], 'n')
+q.add_transition(states[17], states[22], 's')
+q.add_transition(states[17], states[23], 'p')
+q.add_transition(states[17], states[18], 'd')
+q.add_transition(states[18], states[11], 'e')
+q.add_transition(states[19], states[20], 'p')
+q.add_transition(states[20], states[21], 'o')
+q.add_transition(states[21], states[10], 'r')
+q.add_transition(states[22], states[21], 'e')
+q.add_transition(states[23], states[10], 'u')
 
 
 q.default_start_state = 'q0'
