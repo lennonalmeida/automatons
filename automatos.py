@@ -15,15 +15,15 @@ def state(word):
     #     #ot
     elif first == 'a':
         #s or nd
-        state = 'q0->q13'
+        state = 'q0->q1'
         if word[1:2] == 's':
-            state += '->q3'
+            state += '->q13'
             if len(word)>2:
                 state = reject
             else:
                 state+=accepted
         elif word[1:2] == 'n':
-            state =  'q0->q1->q2'
+            state +=  '->q2'
             if word[2:3] == 'd':
                 state += '->q3'
                 if len(word) > 3:
@@ -39,24 +39,26 @@ def state(word):
         #ef or el
         state = 'q0->q6'
         if word[1:2] == 'e':
+            state+='->q4'
             if word[2:3] == 'f':
                 if len(word) > 3:
                     state = reject
                 else:
-                    state += '->q7->q3' + accepted
+                    state += '->q7' + accepted
             elif word[2:3] == 'l':
                 if len(word) > 3:
                     state = reject
                 else:
-                    state += '->q4->q3' + accepted
+                    state += '->q3' + accepted
             else:
                 state +=' | ' + reject
         else:
-            state = reject
+            state +=' | '+ reject
     elif first == 't':
          #ry
+         state = 'q0->q10'
          if word[1:2] == 'r':
-             state = 'q0->q10->q11'
+             state += '->q11'
              if word[2:3] == 'y':
                  state += '->q3'
                  if len(word)>3:
@@ -66,7 +68,7 @@ def state(word):
              else:
                  state += ' | '+reject
          else:
-             state = reject
+             state +=' | '+ reject
     else:
         state = reject
 
@@ -74,6 +76,7 @@ def state(word):
 
 #main code
 print("Press CTRL+C to interrupt the program")
+print("Initial state: q0\nFinal states: q3, q14, q13, q7\n")
 while True:
     try:
         wd = input("Word to be verfied:")
