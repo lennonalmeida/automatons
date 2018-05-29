@@ -5,14 +5,48 @@ def state(word):
     accepted = ' | Accepted'
     first = word[0:1]
     if first == 'f':
-        state = 'hell'
-    #     #or
-    # elif first == 'o':
-    #     #r
-    # elif first == 'i':
-    #     #s or n
-    # elif first == 'n':
-    #     #ot
+        if word[1:2] == 'o':
+            if word[2:3] == 'r':
+                if len(word) < 4:
+                    state = 'q0 > q5 > q9 > q3 | Accepted'
+                else:
+                    state = reject                   
+            else:
+                state = 'q0->q5->q9' + ' | '+ reject
+        else:
+            state = 'q0->q5' + ' | '+ reject
+    elif first == 'o':   
+        if word[1:2] == 'r':
+            if len(word) < 3:
+                state = 'q0 > q9 > q3 | Accepted'
+            else:
+                state = reject
+        else:
+            state = 'q0 > q9' + ' | '+ reject
+    elif first == 'i':
+        if word[1:2] == 's':
+            if len(word) < 3:
+               state = 'q0 > q8 > q3  | Accepted'
+            else:
+                state = reject
+        elif word[1:2] == 'n':
+            if len(word) < 3:
+                state = 'q0 > q8 > q14 | Accepted'
+            else:
+                state = reject
+        else:
+            state = 'q0 > q8' + ' | '+ reject
+    elif first == 'n':
+        if word[1:2] == 'o':
+            if word[2:3] == 't':
+                if len(word) < 4:
+                     state = 'q0 > q12 > q15 > q3 | Accepted'
+                else:
+                     state = reject
+            else:
+                state = 'q0 > q12 > q15' + ' | '+ reject
+        else:
+            state = 'q0 > q12' + ' | '+ reject
     elif first == 'a':
         #s or nd
         state = 'q0->q1'
