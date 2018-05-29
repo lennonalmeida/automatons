@@ -81,8 +81,12 @@ while True:
     try:
         wd = input("Word to be verfied:")
         state_out = state(wd)
+        print(wd)
         print(state_out)
         print("-------------------------")
+    except EOFError:
+        print("EOF")
+        break
     except KeyboardInterrupt:
         print("CTRL-C pressed")
         break
