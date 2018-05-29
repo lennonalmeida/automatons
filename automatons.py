@@ -48,6 +48,6 @@ q.add_transition(states[21], states[10], 'r')
 q.add_transition(states[22], states[21], 'e')
 q.add_transition(states[23], states[10], 'u')
 
-
+print ("q6 is the final state")
 q.default_start_state = 'q0'
 print(q.pformat())
